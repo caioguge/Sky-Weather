@@ -31,7 +31,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       });
     } catch (e) {
       // ignore: avoid_print
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
   }
 
