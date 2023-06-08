@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Color.fromRGBO(0, 122, 180, 1),
                           ),
                         ),
-                        labelText: 'Password',
+                        labelText: 'Senha',
                         labelStyle: TextStyle(color: Colors.white),
                         prefixIcon: Icon(
                           Icons.password,
