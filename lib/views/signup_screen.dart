@@ -27,6 +27,14 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Registro',
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 20,
+            letterSpacing: -1,
+          ),
+        ),
         backgroundColor: const Color.fromRGBO(0, 122, 180, 1),
       ),
       body: Container(
