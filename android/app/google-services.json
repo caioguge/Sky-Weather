@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "345293862993",
+    "project_id": "weatherproject-fd61a",
+    "storage_bucket": "weatherproject-fd61a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345293862993:android:96e71bed94adabf3ac2070",
+        "android_client_info": {
+          "package_name": "br.com.caiogugedev.weather_idea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345293862993-6s5e7vcvdbvvbaipa1nrh4a50jmo5lef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZjWgzh-JIliDzh_qeC-fxR7R-NPrr684"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345293862993-6s5e7vcvdbvvbaipa1nrh4a50jmo5lef.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "345293862993-rhegf5afr4s7r4f2tr7m6d8qgn1btid1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.caiogugedev.weatherIdea"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
