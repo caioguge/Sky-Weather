@@ -23,6 +23,13 @@ class _SignupScreenState extends State<SignupScreen> {
     super.dispose();
   }
 
+  bool validarEmail(String email) {
+    final RegExp regex = RegExp(
+      r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',
+    );
+    return regex.hasMatch(email);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,8 +126,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Preencha seu E-mail';
+                        if (value!.isEmpty || !validarEmail(value)) {
+                          return 'O endereço de e-mail é inválido';
                         }
                         return null;
                       },
