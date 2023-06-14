@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
+import '../helpers/validators.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
 
   FocusNode passwordFocusNode = FocusNode();
   FocusNode emailFocusNode = FocusNode();
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passController.dispose();
-    super.dispose();
-  }
-
-  bool validarEmail(String email) {
-    final RegExp regex = RegExp(
-      r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',
-    );
-    return regex.hasMatch(email);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +49,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     padding: const EdgeInsets.all(24),
                     child: TextFormField(
                       cursorColor: Colors.white,
-                      controller: nameController,
+                      controller: _nameController,
                       style: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Montserrat',
@@ -71,11 +58,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       keyboardType: TextInputType.text,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Preencha seu nome';
-                        } else if (value.length < 3) {
-                          return 'Preencha um nome válido';
+                          return 'Campo obrigatório';
+                        } else if (value.trim().split(' ').length <= 1) {
+                          return 'O sobrenome é obrigatório';
                         }
                         return null;
+                      },
+                      onSaved: (name) {
+                        _nameController.text = name!;
                       },
                       decoration: const InputDecoration(
                         filled: true,
@@ -118,18 +108,21 @@ class _SignupScreenState extends State<SignupScreen> {
                         const EdgeInsets.only(left: 24, right: 24, bottom: 24),
                     child: TextFormField(
                       cursorColor: Colors.white,
-                      controller: emailController,
+                      controller: _emailController,
                       style: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Montserrat',
                         color: Colors.white,
                       ),
                       keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty || !validarEmail(value)) {
+                      validator: (email) {
+                        if (email!.isEmpty || !validarEmail(email)) {
                           return 'O endereço de e-mail é inválido';
                         }
                         return null;
+                      },
+                      onSaved: (email) {
+                        _emailController.text = email!;
                       },
                       decoration: const InputDecoration(
                         filled: true,
@@ -172,7 +165,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         const EdgeInsets.only(right: 24, left: 24, bottom: 24),
                     child: TextFormField(
                       cursorColor: Colors.white,
-                      controller: passController,
+                      controller: _passController,
                       style: const TextStyle(
                         fontSize: 16,
                         fontFamily: 'Montserrat',
@@ -180,13 +173,16 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       keyboardType: TextInputType.text,
                       obscureText: true,
-                      validator: (value) {
-                        if (value!.isEmpty) {
+                      validator: (pass) {
+                        if (pass!.isEmpty) {
                           return 'Preencha sua senha';
-                        } else if (value.length < 6) {
+                        } else if (pass.length < 6) {
                           return 'Cadastre uma senha com mais de 6 dígitos';
                         }
                         return null;
+                      },
+                      onSaved: (pass) {
+                        _passController.text = pass!;
                       },
                       decoration: const InputDecoration(
                         filled: true,
